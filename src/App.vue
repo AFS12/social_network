@@ -1,21 +1,16 @@
 <template>
   <v-app>
-    <v-app-bar
+    <v-container fluid>
+      <v-app-bar
       app
       color="grey darken-4"
       dark
+      fixed
     >
       <container class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+        
         <v-container>
-          <h1>Social_Network</h1>
+          
         </v-container>
       </container>
 
@@ -53,8 +48,50 @@
         <v-icon>mdi-menu-down</v-icon>
       </v-btn>
     </v-app-bar>
+    </v-container>
+    <v-navigation-drawer  fixed app v-model='drawer' :mini-variant.sync="mini">
+      <v-list-item>
+        <v-list-item-content color="primary">
+          <v-list-item-title class="title">
+            <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          transition="scale-transition"
+          width="30"
+        />
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
 
+      <v-divider></v-divider>
+
+      <v-list
+        dense
+        nav
+      >
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          link
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
     <v-main>
+      <v-container fluid>
+       
+
+      </v-container>
+      
       <HelloWorld/>
     </v-main>
   </v-app>
@@ -70,9 +107,16 @@ export default {
     HelloWorld,
   },
 
-  data: () => ({
-    //
-  }),
+  data () {
+    return{
+      items: [
+          { title: 'Dashboard', icon: 'mdi-view-dashboard' },
+          { title: 'Photos', icon: 'mdi-image' },
+          { title: 'About', icon: 'mdi-help-box' },
+        ],
+        right: null,
+    }
+  },
 };
 </script>
 
