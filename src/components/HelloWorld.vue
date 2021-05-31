@@ -51,13 +51,14 @@
               <v-col cols="12" sm="9">
                 <v-card elevation="3" outlined shaped>
                   <v-row>
-                    <v-col cols="12" sm="11">
+                    <v-col cols="12" sm="12">
                       <v-card-title primary-title>
                         {{ coment.name }}
                       </v-card-title>
                       <v-card-text>
                         {{ coment.text }}
                       </v-card-text>
+                      <v-divider></v-divider>
                       <v-card-actions>
                         <v-btn text>
                           <v-icon class="mr-1">mdi-thumb-up-outline</v-icon>
