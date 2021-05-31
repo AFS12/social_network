@@ -76,6 +76,15 @@
               <v-col cols="12" sm="1"></v-col>
             </v-row>
           </v-list>
+          <v-divider></v-divider>
+          <br />
+          <v-row>
+            <v-col cols="12" sm="1"></v-col>
+            <v-col cols="12" sm="10">
+              <v-text-field solo  append-icon="mdi-emoticon" append-outer-icon="mdi-send-outline"></v-text-field>
+            </v-col>
+            <v-col cols="12" sm="1"></v-col>
+          </v-row>
         </v-card>
       </v-col>
     </v-row>
