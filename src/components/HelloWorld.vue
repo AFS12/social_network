@@ -12,7 +12,7 @@
             <span class="mr-2 ">{{index.name}}</span>
           </v-card-title>
           <v-card-text>
-            <h3>ALGUMA PUB</h3>
+            <h3>{{index.text}}</h3>
             <br>
             <v-img
               :src= index.img
@@ -36,22 +36,27 @@ export default {
         {
           img: 'https://abglt.org.br/wp-content/uploads/2020/10/wallpaper-pc1-scaled.jpg',
           name: 'Arthur Ayres',
+          text: 'Look to horizon and make this your destiny.',
         }, 
         {
           img: 'https://i.pinimg.com/originals/0a/4d/cb/0a4dcb92fa2d3c601b58d72720d6bec4.jpg',
           name: 'Julia Goncalves',
+          text: 'My new picture, i loved this!!',
         }, 
         {
           img: 'https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/',
           name: 'Juia Do Carmo',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus iaculis sed metus eget egestas. Curabitur magna elit, varius quis luctus in, blandit sit amet mi. Fusce pharetra mattis ornare. In nibh orci, sagittis non ultricies et, egestas vel nisl. In hac habitasse platea dictumst. Nunc leo metus, aliquet in risus et, volutpat suscipit massa. Pellentesque et dolor lacus. Praesent cursus ut dolor at blandit. Mauris volutpat porttitor varius. Nam vel pellentesque ante. Proin sit amet velit nunc. Ut vel tortor luctus, pretium felis vitae, pulvinar quam. Vivamus fermentum ligula quis feugiat tincidunt. Quisque tincidunt mi dapibus, sollicitudin ligula eget, egestas odio. Nullam luctus nisl volutpat neque ultricies ultrices. Sed condimentum nibh et tellus interdum, id varius nisi feugiat.',
         }, 
         {
           img: 'https://wallpapercave.com/wp/wp7864479.png',
           name: 'Paçoca Mendonça',
+          text: 'Aliquam rhoncus turpis a neque malesuada scelerisque at in ante. Etiam dolor erat, mattis vitae mollis non, luctus nec libero. Nunc bibendum fringilla dui, et malesuada felis vestibulum ut. Morbi quis suscipit est. Sed quis aliquet sem. In hac habitasse platea dictumst. Vivamus imperdiet consectetur pellentesque.',
         }, 
         {
           img: 'https://psxbrasil.com.br/wp-content/uploads/2020/09/TLOU-2-4K.jpg',
           name: 'GameShop',
+          text: '<3',
         } ]
     };
     
