@@ -13,7 +13,7 @@
         <v-spacer></v-spacer>
       </v-app-bar>
     </v-container>
-    <v-navigation-drawer fixed app v-model="drawer" :mini-variant.sync="mini" left>
+    <v-navigation-drawer fixed app left>
       <v-list-item class="grey darken-4" dark>
         <v-list-item-content color="primary">
           <v-list-item-title class="title">
@@ -36,7 +36,7 @@
       <v-divider></v-divider>
 
       <v-list dense nav>
-        <v-list-item v-for="item in items" :key="item.title" link>
+        <v-list-item v-for="(item, i) in items" :key="i" link>
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -51,8 +51,6 @@
     <v-navigation-drawer
       fixed
       app
-      v-model="drawer"
-      :mini-variant.sync="mini"
       right
     >
       <v-list-item class="grey darken-4">
@@ -78,15 +76,15 @@
                   </template>
                   <v-list>
                     <v-list-item
-                      v-for="(item, index) in notfications"
-                      :key="index"
+                      v-for="(notfication, not) in notfications"
+                      :key="not"
                     >
                       <v-list-item-avatar>
-                        <v-img :src="item.avatar"></v-img>
+                        <v-img :src="notfication.avatar"></v-img>
                       </v-list-item-avatar>
-                      <v-list-item-title>{{ item.name }}</v-list-item-title>
+                      <v-list-item-title>{{ notfication.name }}</v-list-item-title>
                       <br>
-                      <v-list-item-subtitle>{{ item.title }}</v-list-item-subtitle>
+                      <v-list-item-subtitle>{{ notfication.title }}</v-list-item-subtitle>
                           <v-divider></v-divider>
                     </v-list-item>
                   </v-list>
@@ -105,19 +103,19 @@
       <v-divider></v-divider>
 
       <v-list dense nav>
-        <v-list-item v-for="item in friends" :key="item.title" link>
+        <v-list-item v-for="(friend, f) in friends" :key="f" link>
           
           <v-list-item-avatar>
-            <v-img :src="item.avatar"></v-img>
+            <v-img :src="friend.avatar"></v-img>
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title>{{ friend.title }}</v-list-item-title>
           </v-list-item-content>
 
           <v-badge
             bottom
-            :color = item.status
+            :color = friend.status
             dot
             overlap
           ></v-badge>

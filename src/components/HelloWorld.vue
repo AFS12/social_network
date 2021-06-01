@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row align="center" justify="center" v-for="index in posts" :key="index">
+    <v-row align="center" justify="center" v-for="(post, p) in posts" :key="p">
       <v-col cols="12" sm="8">
         <v-card>
           <v-card-title>
@@ -8,21 +8,21 @@
               <v-col cols="12" sm="1">
                 <v-avatar>
                   <v-img
-                    :src="index.avatar"
+                    :src="post.avatar"
                     max-height="50"
                     max-width="50"
                   ></v-img>
                 </v-avatar>
               </v-col>
               <v-col cols="12" sm="8">
-                <span class="mr-2">{{ index.name }}</span>
+                <span class="mr-2">{{ post.name }}</span>
               </v-col>
             </v-row>
           </v-card-title>
           <v-card-text>
-            <h3>{{ index.text }}</h3>
+            <h3>{{ post.text }}</h3>
             <br />
-            <v-img :src="index.img" max-height="1000"></v-img>
+            <v-img :src="post.img" max-height="1000"></v-img>
           </v-card-text>
           <v-divider></v-divider>
           <v-card-actions>
@@ -37,7 +37,7 @@
             </v-btn>
           </v-card-actions>
           <v-divider></v-divider>
-          <v-list v-for="coment in index.coments" :key="coment">
+          <v-list v-for="(coment, com) in post.coments" :key="com">
             <v-row>
               <v-col cols="12" sm="1"></v-col>
               <v-col cols="12" sm="1"
@@ -81,7 +81,7 @@
           <v-row>
             <v-col cols="12" sm="1"></v-col>
             <v-col cols="12" sm="10">
-              <v-text-field solo  append-icon="mdi-emoticon" append-outer-icon="mdi-send-outline"></v-text-field>
+              <v-text-field solo  append-icon="mdi-emoticon" append-outer-icon="mdi-send-outline" @click:append-outer="sendMessage" @click:append="emote"></v-text-field>
             </v-col>
             <v-col cols="12" sm="1"></v-col>
           </v-row>
@@ -233,6 +233,14 @@ export default {
         }
       ]
     };
-  }
+  },
+  methods: {
+      sendMessage: function(){
+        console.log("sending")
+      },
+      emote: function(){
+        console.log("emoting")
+      }
+    },
 };
 </script>
