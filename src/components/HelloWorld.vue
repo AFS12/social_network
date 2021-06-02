@@ -81,7 +81,24 @@
           <v-row>
             <v-col cols="12" sm="1"></v-col>
             <v-col cols="12" sm="10">
-              <v-text-field solo  append-icon="mdi-emoticon" v-model="message" append-outer-icon="mdi-send-outline" @click:append-outer="sendMessage(post)" @click:append="emote"></v-text-field>
+              <v-text-field
+                solo
+                append-icon="mdi-emoticon"
+                v-model="message"
+                append-outer-icon="mdi-send-outline"
+                @click:append-outer="sendMessage(post)"
+                @click:append="toogleDialogEmoji"
+              ></v-text-field>
+
+              <div>
+                <VEmojiPicker
+                  v-show="showDialog"
+                  :style="{ width: '440px', height: '200' }"
+                  labelSearch="Search"
+                  lang="pt-BR"
+                  @select="onSelectEmoji"
+                />
+              </div>
             </v-col>
             <v-col cols="12" sm="1"></v-col>
           </v-row>
@@ -92,11 +109,17 @@
 </template>
 
 <script>
+import { VEmojiPicker, emojisDefault, categoriesDefault } from "v-emoji-picker";
+
 export default {
   name: "HelloWorld",
+  components: {
+    VEmojiPicker
+  },
   data() {
     return {
-      message: '',
+      message: "",
+      showDialog: false,
       drawer: true,
       mini: true,
       posts: [
@@ -240,27 +263,74 @@ export default {
       ]
     };
   },
+  mounted() {
+    console.log(categoriesDefault);
+    console.log("Total emojis:", emojisDefault.length);
+  },
   methods: {
-      sendMessage: function(post){
-        console.log("sending")
-        this.posts.forEach(element => {
-          if (element.id == post.id && (this.message != null && this.message != '')) {
-            element.coments.push( {
-              name: "Arthur Ayres",
-              avatar:"https://scontent.fmcz3-1.fna.fbcdn.net/v/t1.6435-9/82493379_3529103920494983_8465647889245274112_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeEADBnWqpwPLSavBS35YwmwaHmnngysQmpoeaeeDKxCamLd5rHny-zLsFjH9xweygwB3INDOgnX9S0soMHtfivw&_nc_ohc=D9MDAce1smQAX_ZIhNX&_nc_ht=scontent.fmcz3-1.fna&oh=5922a9e6ab2492e4abc8945acf270bcc&oe=60DBCEF6",
-              text: this.message
-            })
-            this.message = "";
-            return
-          }
-        });
-      },
-      emote: function(){
-        console.log("emoting")
-      }
+    toogleDialogEmoji() {
+      console.log("Toogle!");
+      this.showDialog = !this.showDialog;
     },
-    computed: {
-      
+    onSelectEmoji(emoji) {
+      this.message += emoji.data;
+      // Optional
+      // this.toogleDialogEmoji();
+    },
+
+    sendMessage: function(post) {
+      console.log("sending");
+      this.posts.forEach(element => {
+        if (
+          element.id == post.id &&
+          this.message != null &&
+          this.message != ""
+        ) {
+          element.coments.push({
+            name: "Arthur Ayres",
+            avatar:
+              "https://scontent.fmcz3-1.fna.fbcdn.net/v/t1.6435-9/82493379_3529103920494983_8465647889245274112_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeEADBnWqpwPLSavBS35YwmwaHmnngysQmpoeaeeDKxCamLd5rHny-zLsFjH9xweygwB3INDOgnX9S0soMHtfivw&_nc_ohc=D9MDAce1smQAX_ZIhNX&_nc_ht=scontent.fmcz3-1.fna&oh=5922a9e6ab2492e4abc8945acf270bcc&oe=60DBCEF6",
+            text: this.message
+          });
+          this.message = "";
+          this.showDialog = false;
+          return;
+        }
+      });
+    },
+    emote: function() {
+      console.log("emoting");
     }
+  },
+  computed: {}
 };
 </script>
+
+<style lang="css" scoped>
+/* THIS IS OPTIONAL */
+/* @font-face {
+  font-family: NotomojiColor;
+  font-weight: 400;
+  src: url(
+      https://cdn.glitch.com/61908de1-dd0a-4359-a54b-6cb6d41bb5fd%2FNotoColorEmoji.ttf?1513108808150
+    )format("truetype");
+} */
+
+#exampleInputEmoji {
+  position: relative;
+}
+
+.your-input-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  padding: 8px;
+  font-size: 16px;
+  margin-right: 2px;
+  border-radius: 4px;
+  border: 1px solid #848484;
+}
+</style>
