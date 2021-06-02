@@ -81,7 +81,7 @@
           <v-row>
             <v-col cols="12" sm="1"></v-col>
             <v-col cols="12" sm="10">
-              <v-text-field solo  append-icon="mdi-emoticon" append-outer-icon="mdi-send-outline" @click:append-outer="sendMessage" @click:append="emote"></v-text-field>
+              <v-text-field solo  append-icon="mdi-emoticon" v-model="message" append-outer-icon="mdi-send-outline" @click:append-outer="sendMessage(post)" @click:append="emote"></v-text-field>
             </v-col>
             <v-col cols="12" sm="1"></v-col>
           </v-row>
@@ -96,10 +96,12 @@ export default {
   name: "HelloWorld",
   data() {
     return {
+      message: '',
       drawer: true,
       mini: true,
       posts: [
         {
+          id: 1,
           img:
             "https://abglt.org.br/wp-content/uploads/2020/10/wallpaper-pc1-scaled.jpg",
           name: "Roberto Carvalho",
@@ -130,6 +132,7 @@ export default {
           ]
         },
         {
+          id: 2,
           img:
             "https://i.pinimg.com/originals/0a/4d/cb/0a4dcb92fa2d3c601b58d72720d6bec4.jpg",
           name: "Mary Mine",
@@ -161,6 +164,7 @@ export default {
           ]
         },
         {
+          id: 3,
           img:
             "https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/",
           name: "Sarah Silva",
@@ -185,6 +189,7 @@ export default {
           ]
         },
         {
+          id: 4,
           img: "https://wallpapercave.com/wp/wp7864479.png",
           name: "Samuel muglia",
           avatar:
@@ -215,6 +220,7 @@ export default {
           ]
         },
         {
+          id: 5,
           img:
             "https://psxbrasil.com.br/wp-content/uploads/2020/09/TLOU-2-4K.jpg",
           name: "Marco Oliveira",
@@ -235,12 +241,26 @@ export default {
     };
   },
   methods: {
-      sendMessage: function(){
+      sendMessage: function(post){
         console.log("sending")
+        this.posts.forEach(element => {
+          if (element.id == post.id && (this.message != null && this.message != '')) {
+            element.coments.push( {
+              name: "Arthur Ayres",
+              avatar:"https://scontent.fmcz3-1.fna.fbcdn.net/v/t1.6435-9/82493379_3529103920494983_8465647889245274112_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeEADBnWqpwPLSavBS35YwmwaHmnngysQmpoeaeeDKxCamLd5rHny-zLsFjH9xweygwB3INDOgnX9S0soMHtfivw&_nc_ohc=D9MDAce1smQAX_ZIhNX&_nc_ht=scontent.fmcz3-1.fna&oh=5922a9e6ab2492e4abc8945acf270bcc&oe=60DBCEF6",
+              text: this.message
+            })
+            this.message = "";
+            return
+          }
+        });
       },
       emote: function(){
         console.log("emoting")
       }
     },
+    computed: {
+      
+    }
 };
 </script>
