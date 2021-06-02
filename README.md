@@ -5,6 +5,7 @@ This is a project for traning front-end with vue.js and vuetify
 ## Project setup
 ```
 npm install
+npm install --save v-emoji-picker
 ```
 
 ### Compiles and hot-reloads for development
