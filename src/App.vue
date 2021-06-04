@@ -121,6 +121,32 @@
       </v-list>
     </v-navigation-drawer>
     <v-main>
+      <v-row>
+        <v-spacer></v-spacer>
+        <v-cols>
+          <v-avatar size="75">
+            <v-img
+              src="https://scontent.fmcz3-1.fna.fbcdn.net/v/t1.6435-9/82493379_3529103920494983_8465647889245274112_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeEADBnWqpwPLSavBS35YwmwaHmnngysQmpoeaeeDKxCamLd5rHny-zLsFjH9xweygwB3INDOgnX9S0soMHtfivw&_nc_ohc=D9MDAce1smQAX_ZIhNX&_nc_ht=scontent.fmcz3-1.fna&oh=5922a9e6ab2492e4abc8945acf270bcc&oe=60DBCEF6"
+              max-height="100"
+              max-width="100"
+            ></v-img>
+          </v-avatar>
+          <h5>Arthur Ayres</h5>
+        </v-cols>
+        <v-cols v-for="(friend, f) in friends" :key="f">
+          <v-avatar size="75">
+            <v-img
+              :src= friend.avatar
+              max-height="100"
+              max-width="100"
+            ></v-img>
+          </v-avatar>
+          <h5>{{friend.title}}</h5>
+        </v-cols>
+        <v-spacer></v-spacer>
+      </v-row>
+      <br>
+      <v-divider></v-divider>
       <v-container fluid> </v-container>
 
       <HelloWorld />
