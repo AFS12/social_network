@@ -134,7 +134,7 @@
           <h5>Arthur Ayres</h5>
         </v-cols>
         <v-cols v-for="(friend, f) in friends" :key="f">
-          <v-avatar size="75">
+          <v-avatar size="75" >
             <v-img
               :src= friend.avatar
               max-height="100"
@@ -167,7 +167,10 @@ export default {
   data() {
     return {
       items: [
-        { title: "Dashboard", icon: "mdi-view-dashboard" },
+        { title: "Friends", icon: "mdi-account-multiple" },
+        { title: "Groups", icon: "mdi-account-group" },
+        { title: "Saved", icon: "mdi-content-save" },
+        { title: "Pages", icon: "mdi-flag-variant" },
         { title: "Photos", icon: "mdi-image" },
         { title: "About", icon: "mdi-help-box" }
       ],
